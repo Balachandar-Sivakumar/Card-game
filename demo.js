@@ -51,7 +51,6 @@ function timing(time) {
             timer.innerHTML = `${min.toString().padStart(2, '0')} : ${sec.toString().padStart(2, '0')}`;
             if (time == 0 || !trigger) {
                 clearInterval(str_time);
-                start();
                 pop_up(!trigger ? '🎉 Congratulations! 🎉 You won the game 🏆' : '⏳Time up you lose the game');
             }
         }, 1000);
