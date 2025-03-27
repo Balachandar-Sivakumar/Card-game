@@ -1,0 +1,143 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #2c3e50, #4ca1af); /* Gradient background */
+    color: #fff;
+}
+
+.container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+h1 {
+    font-size: 3rem;
+    padding: 1rem 0;
+    color: #fff;
+}
+
+/* Image Container */
+.images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 70%;
+    gap: 1rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #000, #444); /* Dark gradient background */
+    border-radius: 12px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+/* Image Styling */
+img {
+    height: 200px;
+    width: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
+    object-fit: cover;
+}
+
+/* Hover Effects */
+img:hover {
+    box-shadow: 0 10px 20px rgba(255, 255, 255, 0.3);
+    filter: brightness(1.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .images {
+        width: 90%;
+    }
+    
+    img {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+.flip_box{
+    position: relative;
+}
+.back_side{
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background:url('https://t4.ftcdn.net/jpg/02/67/10/31/360_F_267103158_QTPpB2GxYh8RZBL4X9XL42SM7jiZ5yXL.jpg');
+    top: 0;
+    backface-visibility: hidden;
+    filter: brightness(1.3);
+    border-radius: 10px;
+    transition: .5s ease;
+}
+
+.rotate{
+    transform: rotateY(180deg);
+    visibility: visible;
+}
+
+.popup {
+   
+    background: white;
+    padding: 20px;
+    color: black;
+    border-radius: 10px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.pop_up_div{
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgb(0, 0, 0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    font-size: 1.3rem;
+    font-weight: 600;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 1rem;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+.show{
+    display: flex;
+}
+
+.timer {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    background: rgba(0, 0, 0, 0.7);
+    padding: 10px 20px;
+    border-radius: 8px;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
