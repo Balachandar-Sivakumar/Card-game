@@ -10,17 +10,15 @@ function start() {
     img_con.innerHTML = '';
     let num = [];
 
-    for (let i = 0; i < 2; i++)
-        shuffleArray(photos).forEach(n => img_con.innerHTML += `<div class='flip_box'><img src="${n}"><div class='back_side'></div></div>`);
+    for (let i = 0; i < 2; i++) shuffleArray(photos).forEach(n => img_con.innerHTML += `<div class='flip_box'><img src="${n}"><div class='back_side'></div></div>`);
 
     let images = Array.from(document.querySelectorAll('img')),
         back = Array.from(document.querySelectorAll('.back_side'));
 
-    for(let i=0;i<back.length;i++)num.push(i);
+    for (let i = 0; i < back.length; i++) num.push(i);
 
     back.forEach((n, i) => n.addEventListener('click', () => {
         n.classList.add('rotate');
-
         if (flag) return (first_ind = i, flag = false);
 
         sec_ind = i;
@@ -35,24 +33,28 @@ function start() {
 
 start();
 
+let show = document.querySelector('.h2_tag'),
+    pop = document.querySelector('.pop_up_div');
+
 function pop_up(content) {
-    document.querySelector('.pop_up_div').classList.toggle('show');
-    document.querySelector('.h2_tag').innerHTML = content;
+    pop.classList.toggle('show');
+    show.innerHTML = content;
 }
 
 document.querySelector('.restart').addEventListener('click', () => window.location.reload());
 
 function timing(time) {
-    let timer = document.getElementById("time");
-    let str_time = setInterval(() => {
-        let min = Math.floor(time / 60), sec = time % 60;
-        timer.innerHTML = `${min.toString().padStart(2, '0')} : ${sec.toString().padStart(2, '0')}`;
-        if (time == 0 || !trigger) {
-            clearInterval(str_time);
-            start();
-            pop_up(!trigger ? '🎉 Congratulations! 🎉 You won the game 🏆' : '⏳ Time up, you lose the game');
-        }
-    }, 1000);
+    let timer = document.getElementById("time"),
+        str_time = setInterval(() => {
+            time--;
+            let min = Math.floor(time / 60), sec = time % 60;
+            timer.innerHTML = `${min.toString().padStart(2, '0')} : ${sec.toString().padStart(2, '0')}`;
+            if (time == 0 || !trigger) {
+                clearInterval(str_time);
+                start();
+                pop_up(!trigger ? '🎉 Congratulations! 🎉 You won the game 🏆' : '⏳Time up you lose the game');
+            }
+        }, 1000);
 }
 
 timing(180);
